@@ -22,6 +22,9 @@ services:
       - nextcloud_network
     depends_on:
       - db
+    environment:
+      - VIRTUAL_HOST=nextcloud.neubaum.com
+    restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
     #   - nextcloud:/var/www/html
@@ -34,11 +37,6 @@ services:
     #   - nextcloud_themes:/var/www/html/themes
     #   # - ./app/themes:/var/www/html/themes
 
-  
-
-    environment:
-      - VIRTUAL_HOST=nextcloud.neubaum.com
-    restart: unless-stopped
 volumes:
   db_lt:
   nc_db:
