@@ -1,15 +1,15 @@
 version: "2"
  volumes:
    nextcloud:
-   db:
-   data:
+   nc_db:
+   nc_ata:
  services:
    db:
      image: mariadb
      command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
      restart: always
      volumes:
-       - db:/var/lib/mysql
+       - nc_db:/var/lib/mysql
      environment:
        - MYSQL_ROOT_PASSWORD=1234osradar
        - MYSQL_PASSWORD=1234osradar
@@ -23,7 +23,7 @@ version: "2"
        - db
      volumes:
        - nextcloud:/var/www/html
-       - data:/var/www/html/data
+       - nc_data:/var/www/html/data
      restart: always
 
 
