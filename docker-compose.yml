@@ -30,14 +30,14 @@ services:
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
-    #   - nextcloud:/var/www/html
-    #   - nextcloud_config:/var/www/html/config
+      - nextcloud:/var/www/html
+      - nextcloud_config:/var/www/html/config
     #   # - ./app/config:/var/www/html/config
-    #   - nextcloud_apps:/var/www/html/custom_apps
+      - nextcloud_apps:/var/www/html/custom_apps
     #   # - ./app/custom_apps:/var/www/html/custom_apps
-    #   - nextcloud_htmldata:/var/www/html/data
+      - nextcloud_htmldata:/var/www/html/data
     #   # - ./app/data:/var/www/html/data
-    #   - nextcloud_themes:/var/www/html/themes
+      - nextcloud_themes:/var/www/html/themes
     #   # - ./app/themes:/var/www/html/themes
 
 volumes:
