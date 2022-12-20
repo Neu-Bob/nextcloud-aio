@@ -16,5 +16,5 @@ services:
     environment:
       - APACHE_PORT=11000  # change this port number if 11000 is already in use on your host system.
       - APACHE_DISABLE_REWRITE_IP=1
-      - NEXTCLOUD_TRUSTED_DOMAINS=< nextcloud.neubaum.com > < 192.168.86.100 > # Your domain name + proxy host IP
-      - TRUSTED_PROXIES=< 192.168.86.100 > # proxy host IP
+      - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.neubaum.com 192.168.86.100 # Your domain name + proxy host IP
+      - TRUSTED_PROXIES=192.168.86.100 # proxy host IP
