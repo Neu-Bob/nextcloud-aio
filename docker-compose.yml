@@ -1,33 +1,51 @@
-version: "3"
- volumes:
-   nextcloud:
-   nc_db:
-   nc_ata:
- services:
-   db:
-     image: mariadb
-     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
-     restart: always
-     volumes:
-       - nc_db:/var/lib/mysql
-     environment:
-       - MYSQL_ROOT_PASSWORD=1234osradar
-       - MYSQL_PASSWORD=1234osradar
-       - MYSQL_DATABASE=nextclouddb
-       - MYSQL_USER=nextclouduser
- app:
-     image: nextcloud
-     ports:
-       - 8090:80
-     links:
-       - db
-     volumes:
-       - nextcloud:/var/www/html
-       - nc_data:/var/www/html/data
-     restart: always
+version: '3' 
+services:
+  db:
+    image: mariadb
+    container_name: nextcloud-mariadb
+    networks:
+      - nextcloud_network
+    volumes:
+      - nc_db:/var/lib/mysql
+      # - /etc/localtime:/etc/localtime:ro
+      - db_lt:/etc/localtime:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    restart: unless-stopped
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud-app
+    networks:
+      - nextcloud_network
+    depends_on:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+      - nextcloud_config:/var/www/html/config
+      # - ./app/config:/var/www/html/config
+      - nextcloud_apps:/var/www/html/custom_apps
+      # - ./app/custom_apps:/var/www/html/custom_apps
+      - nextcloud_htmldata:/var/www/html/data
+      # - ./app/data:/var/www/html/data
+      nextcloud_themes:/var/www/html/themes
+      # - ./app/themes:/var/www/html/themes
+      nc_lt:/etc/localtime:/etc/localtime:ro
+      # - /etc/localtime:/etc/localtime:ro
 
-
-
-# ## NOTES
-
-# GIT LOCATION - https://github.com/Neu-Bob/nextcloud
+    environment:
+      - VIRTUAL_HOST=nextcloud.neubaum.com
+    restart: unless-stopped
+volumes:
+  nextcloud:
+  nextcloud_themes:
+  nextcloud_htmldata:
+  nextcloud_apps:
+  nextcloud_config:
+  nc_lt:
+  db_lt:
+  nc_db:
+networks:
+  nextcloud_network:
