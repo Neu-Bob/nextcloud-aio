@@ -38,14 +38,15 @@ services:
     environment:
       - VIRTUAL_HOST=nextcloud.neubaum.com
     restart: unless-stopped
-# volumes:
+volumes:
+  db_lt:
+  nc_db:
 #   nextcloud:
 #   nextcloud_themes:
 #   nextcloud_htmldata:
 #   nextcloud_apps:
 #   nextcloud_config:
 #   nc_lt:
-#   db_lt:
-#   nc_db:
+
 networks:
   nextcloud_network:
