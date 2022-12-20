@@ -22,30 +22,30 @@ services:
       - nextcloud_network
     depends_on:
       - db
-    volumes:
-      - nextcloud:/var/www/html
-      - nextcloud_config:/var/www/html/config
-      # - ./app/config:/var/www/html/config
-      - nextcloud_apps:/var/www/html/custom_apps
-      # - ./app/custom_apps:/var/www/html/custom_apps
-      - nextcloud_htmldata:/var/www/html/data
-      # - ./app/data:/var/www/html/data
-      - nextcloud_themes:/var/www/html/themes
-      # - ./app/themes:/var/www/html/themes
-      - nc_lt:/etc/localtime:ro
-      # - /etc/localtime:/etc/localtime:ro
+    # volumes:
+    #   - nextcloud:/var/www/html
+    #   - nextcloud_config:/var/www/html/config
+    #   # - ./app/config:/var/www/html/config
+    #   - nextcloud_apps:/var/www/html/custom_apps
+    #   # - ./app/custom_apps:/var/www/html/custom_apps
+    #   - nextcloud_htmldata:/var/www/html/data
+    #   # - ./app/data:/var/www/html/data
+    #   - nextcloud_themes:/var/www/html/themes
+    #   # - ./app/themes:/var/www/html/themes
+    #   - nc_lt:/etc/localtime:ro
+    #   # - /etc/localtime:/etc/localtime:ro
 
     environment:
       - VIRTUAL_HOST=nextcloud.neubaum.com
     restart: unless-stopped
-volumes:
-  nextcloud:
-  nextcloud_themes:
-  nextcloud_htmldata:
-  nextcloud_apps:
-  nextcloud_config:
-  nc_lt:
-  db_lt:
-  nc_db:
+# volumes:
+#   nextcloud:
+#   nextcloud_themes:
+#   nextcloud_htmldata:
+#   nextcloud_apps:
+#   nextcloud_config:
+#   nc_lt:
+#   db_lt:
+#   nc_db:
 networks:
   nextcloud_network:
