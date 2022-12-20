@@ -20,6 +20,9 @@ services:
     container_name: nextcloud-app
     networks:
       - nextcloud_network
+    ports:
+      - 8099:80
+      # - 443:443
     depends_on:
       - db
     environment:
