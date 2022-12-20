@@ -25,3 +25,9 @@ version: '2'
        - nextcloud:/var/www/html
        - data:/var/www/html/data
      restart: always
+
+
+
+# ## NOTES
+
+# GIT LOCATION - https://github.com/Neu-Bob/nextcloud
