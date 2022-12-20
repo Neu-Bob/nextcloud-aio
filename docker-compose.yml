@@ -7,8 +7,8 @@ services:
       - nextcloud_network
     volumes:
       - nc_db:/var/lib/mysql
-      # - /etc/localtime:/etc/localtime:ro
-      - db_lt:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
+      # - db_lt:/etc/localtime:ro
     environment:
       - MYSQL_ROOT_PASSWORD=toor
       - MYSQL_PASSWORD=mysql
@@ -22,7 +22,8 @@ services:
       - nextcloud_network
     depends_on:
       - db
-    # volumes:
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
     #   - nextcloud:/var/www/html
     #   - nextcloud_config:/var/www/html/config
     #   # - ./app/config:/var/www/html/config
@@ -32,8 +33,8 @@ services:
     #   # - ./app/data:/var/www/html/data
     #   - nextcloud_themes:/var/www/html/themes
     #   # - ./app/themes:/var/www/html/themes
-    #   - nc_lt:/etc/localtime:ro
-    #   # - /etc/localtime:/etc/localtime:ro
+
+  
 
     environment:
       - VIRTUAL_HOST=nextcloud.neubaum.com
