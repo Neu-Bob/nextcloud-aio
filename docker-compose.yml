@@ -41,12 +41,12 @@ services:
 volumes:
   db_lt:
   nc_db:
-#   nextcloud:
-#   nextcloud_themes:
-#   nextcloud_htmldata:
-#   nextcloud_apps:
-#   nextcloud_config:
-#   nc_lt:
+  nextcloud:
+  nextcloud_themes:
+  nextcloud_htmldata:
+  nextcloud_apps:
+  nextcloud_config:
+  nc_lt:
 
 networks:
   nextcloud_network:
